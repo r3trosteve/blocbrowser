@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  BLCWebBrowserViewController.h
 //  BlocBrowser
 //
 //  Created by Steven Schofield on 26/07/2014.
@@ -8,11 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
+@interface BLCWebBrowserViewController : UIViewController
 
 @end
-

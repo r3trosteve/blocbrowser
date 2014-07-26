@@ -11,6 +11,7 @@
 		0C37D54E1983B8C60015D360 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C37D54D1983B8C60015D360 /* AppDelegate.m */; };
 		0C37D5501983B8C60015D360 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C37D54F1983B8C60015D360 /* Images.xcassets */; };
 		0C37D55C1983B8C60015D360 /* BlocBrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C37D55B1983B8C60015D360 /* BlocBrowserTests.m */; };
+		0C37D5671983B9360015D360 /* BLCWebBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C37D5661983B9360015D360 /* BLCWebBrowserViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,8 @@
 		0C37D5551983B8C60015D360 /* BlocBrowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlocBrowserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C37D55A1983B8C60015D360 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0C37D55B1983B8C60015D360 /* BlocBrowserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlocBrowserTests.m; sourceTree = "<group>"; };
+		0C37D5651983B9360015D360 /* BLCWebBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLCWebBrowserViewController.h; path = ../BLCWebBrowserViewController.h; sourceTree = "<group>"; };
+		0C37D5661983B9360015D360 /* BLCWebBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLCWebBrowserViewController.m; path = ../BLCWebBrowserViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +77,8 @@
 		0C37D5471983B8C60015D360 /* BlocBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				0C37D5651983B9360015D360 /* BLCWebBrowserViewController.h */,
+				0C37D5661983B9360015D360 /* BLCWebBrowserViewController.m */,
 				0C37D54C1983B8C60015D360 /* AppDelegate.h */,
 				0C37D54D1983B8C60015D360 /* AppDelegate.m */,
 				0C37D54F1983B8C60015D360 /* Images.xcassets */,
@@ -207,6 +212,7 @@
 			files = (
 				0C37D54E1983B8C60015D360 /* AppDelegate.m in Sources */,
 				0C37D54B1983B8C60015D360 /* main.m in Sources */,
+				0C37D5671983B9360015D360 /* BLCWebBrowserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
