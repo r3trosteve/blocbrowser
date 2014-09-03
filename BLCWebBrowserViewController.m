@@ -19,6 +19,7 @@
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) UITextField *textField;
 @property (nonatomic, strong) BLCAwesomeFloatingToolbar *awesomeToolbar;
+@property (nonatomic, assign) BOOL toolbarPositioned;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
 @property (nonatomic, assign) NSUInteger frameCount;
@@ -72,10 +73,17 @@
     self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
     
+    // Size Toolbar in View
+    CGFloat width = CGRectGetWidth(self.view.bounds);
+    CGFloat centerX;
+    centerX = width / 2;
+    self.awesomeToolbar.frame =
+    CGRectMake(centerX - 140, 100, (280), (60 ));
+    
 }
 
-- (void) viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
+- (void) viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
     
     // make webview fill the main view
     // First, calculate some dimensions.
@@ -87,7 +95,10 @@
     self.textField.frame = CGRectMake(0, 0, width, itemHeight);
     self.webView.frame = CGRectMake(0, CGRectGetMaxY(self.textField.frame), width, browserHeight);
     
-    self.awesomeToolbar.frame = CGRectMake(20, CGRectGetMaxY(self.view.bounds) - 80, 280, 60);
+    if (!self.toolbarPositioned) {
+        self.awesomeToolbar.frame = CGRectMake(20, CGRectGetMaxY(self.view.bounds) - 80, 280, 60);
+        self.toolbarPositioned = YES;
+    }
 }
 
 
@@ -121,6 +132,7 @@
     if (URL) {
         NSURLRequest *request = [NSURLRequest requestWithURL:URL];
         [self.webView loadRequest:request];
+        NSLog(@"request made");
     }
     
     return NO;
@@ -186,15 +198,21 @@
 
 #pragma mark - BLCAwesomeFloatingToolbarDelegate
 
-- (void) floatingToolbar:(BLCAwesomeFloatingToolbar *)toolbar didSelectButtonWithTitle:(NSString *)title {
+- (void) floatingToolbar:(BLCAwesomeFloatingToolbar *)toolbar didSelectButton:(UIButton *)button {
+    NSString *title = button.currentTitle;
+    NSLog(@"%@", title);
     if ([title isEqual:kBLCWebBrowserBackString]) {
         [self.webView goBack];
+        NSLog(@"Did Goback");
     } else if ([title isEqual:kBLCWebBrowserForwardString]) {
         [self.webView goForward];
+        NSLog(@"Did Goforward");
     } else if ([title isEqual:kBLCWebBrowserStopString]) {
         [self.webView stopLoading];
+        NSLog(@"Did Stopped Loading");
     } else if ([title isEqual:kBLCWebBrowserRefreshString]) {
         [self.webView reload];
+        NSLog(@"Did reload");
     }
 }
 
@@ -210,9 +228,12 @@
 }
 
 - (void) floatingToolbar:(BLCAwesomeFloatingToolbar *)toolbar didTryToPinchToScale:(CGFloat)scale {
-//    CGFloat startingScale = 1.0;
-//    CGFloat newScale = ;
+    CGFloat floored = MAX(scale, 0.5);
+    self.awesomeToolbar.transform = CGAffineTransformMakeScale(floored, floored);
 }
 
+- (void) floatingToolbar:(BLCAwesomeFloatingToolbar *)toolbar didTryToLongPressToRotateColors:(BOOL)rotateColors {
+    
+}
 
 @end
